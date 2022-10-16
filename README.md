@@ -10,7 +10,7 @@ C program to rotate the screen automatically based on the internal accelerator.
 
 ## Configuration
 
-To Configure autoRotate you have to edit [config.h](./config.h)
+To Configure autoRotate you have to edit [config.h](./config.h) and recompile.
 
 ## Installation
 
