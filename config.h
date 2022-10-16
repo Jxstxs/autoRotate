@@ -5,6 +5,7 @@
 #define WAIT_ROTATE 2
 
 // the Device to read the Data from
+// to see all available: ls /sys/bus/iio/devices/
 #define DEVICE "/sys/bus/iio/devices/iio:device0/"
 
 // the Display to rotate
