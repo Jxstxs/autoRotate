@@ -9,6 +9,7 @@
 #define DEVICE "/sys/bus/iio/devices/iio:device0/"
 
 // the Display to rotate
+// to see all available: xrandr
 #define DISPLAY "eDP"
 
 // the ranges for each Orientation
