@@ -7,6 +7,9 @@
 // the Device to read the Data from
 #define DEVICE "/sys/bus/iio/devices/iio:device0/"
 
+// the Display to rotate
+#define DISPLAY "eDP"
+
 // the ranges for each Orientation
 static int ranges[4][3][2] = {
     //  x         y          z

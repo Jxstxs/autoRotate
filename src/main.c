@@ -3,6 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "./../config.h"
 #include "main.h"
 #include "utils.h"
 
@@ -38,10 +39,11 @@ int main(int argc, char **argv) {
         if (orientation != -1) {
           if (verbose == 1)
             printf("Orientation: %s\n", ORIENTATION[orientation]);
-          // if (snprintf(command, sizeof(command), "xrandr --output eDP
-          // --rotate %s", ORIENTATION[orientation]) >= 0) {
-          if (snprintf(command, sizeof(command), "screenRotate %s",
+          if (snprintf(command, sizeof(command),
+                       "xrandr --output " DISPLAY " --rotate %s",
                        ORIENTATION[orientation]) >= 0) {
+            // if (snprintf(command, sizeof(command), "screenRotate %s",
+            // ORIENTATION[orientation]) >= 0) {
             if (verbose == 1)
               printf("EXECUTING: '%s'\n", command);
             system(command);
