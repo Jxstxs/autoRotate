@@ -1,7 +1,10 @@
 
-<!-- ![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png) -->
-
-# autoRotate
+<h1 align="center">autoRotate</h1>
+<p align="center">
+  <img alt="GitHub" src="https://img.shields.io/github/license/Jxstxs/autoRotate?style=flat-square">
+  <img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Jxstxs/autoRotate?style=flat-square">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/Jxstxs/autoRotate?style=flat-square">
+</p>
 
 C program to rotate the screen automatically based on the internal accelerator.
 
@@ -32,7 +35,3 @@ Install autoRotate by running make
 ## Contributing
 
 Contributions are always welcome! But remember to be Kind
-
-## License
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
