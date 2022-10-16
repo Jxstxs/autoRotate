@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+
+#include "./../config.h"
+#include "main.h"
+#include "utils.h"
+
+int getDimension(const char *dimension) {
+  FILE *dim;
+  char dev_dimension[DEVICE_NAME_LEN];
+  char result[DEVICE_RESULT_LEN];
+  int ret;
+  snprintf(dev_dimension, sizeof(dev_dimension), DEVICE "%s", dimension);
+
+  dim = fopen(dev_dimension, "r");
+
+  if (!dim) {
+    fprintf(stderr, "ERROR: Cant open Accelerator: %s\n", dev_dimension);
+    exit(EXIT_FAILURE);
+  }
+
+  if (fgets(result, sizeof(result), dim) == NULL) {
+    fprintf(stderr, "ERROR: Cant read from Accelerator: %s\n",
+            dev_dimension);
+    exit(EXIT_FAILURE);
+  }
+
+  result[strlen(result) - 1] = 0;
+  ret = atoi(result);
+  if ((ret == 0) && strcmp(result, "0") != 0) {
+    fprintf(stderr, "ERROR: Couldnt convert '%s'\n", result);
+    exit(EXIT_FAILURE);
+  }
+
+  fclose(dim);
+  return ret;
+}
+
+accel getAccel() {
+  accel a;
+  a.x = getDimension("in_accel_x_raw");
+  a.y = getDimension("in_accel_y_raw");
+  a.z = getDimension("in_accel_z_raw");
+  return a;
+}
+
+int getOrientation(accel current) {
+  if rangeCheck (NORMAL) {
+    return NORMAL;
+  } else if rangeCheck (LEFT) {
+    return LEFT;
+  } else if rangeCheck (RIGHT) {
+    return RIGHT;
+  } else if rangeCheck (INVERTED) {
+    return INVERTED;
+  }
+
+  return -1;
+}
