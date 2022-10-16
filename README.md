@@ -19,6 +19,8 @@ Install autoRotate by running make
 ```bash
   sudo make install clean
 ```
+
+> NOTE: only tested on Arch Linux with Xorg
     
 ## Features
 
