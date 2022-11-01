@@ -1,6 +1,8 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <stdlib.h>
+
 // How long to wait until the next check is performed
 #define WAIT_ROTATE 2
 
@@ -19,6 +21,14 @@ static int ranges[4][3][2] = {
     {{ 0, 9}, { -4,  5}, {-13, 4}}, // left
     {{-9, 0}, { -4,  3}, {-11, 2}}, // right
     {{-3, 1}, {  0, 10}, {-10, 2}}, // inverted
+};
+
+static const char *devices_input[] = {
+  NULL
+};
+
+static const char *devices_state[] = {
+  NULL
 };
 
 #endif // CONFIG_H
