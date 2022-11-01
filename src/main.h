@@ -11,7 +11,7 @@ typedef struct {
   int x, y, z;
 } accel;
 
-enum { NORMAL, LEFT, RIGHT, INVERTED };
+enum { NORMAL, LEFT, RIGHT, INVERTED, ENABLE, DISABLE };
 static char *ORIENTATION[4] = {"normal", "left", "right", "inverted"};
 static char *TRANSMISSION[4] = {
   "1 0 0 0 1 0 0 0 1",
