@@ -2,12 +2,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <signal.h>
 
 #include "./../config.h"
 #include "main.h"
 #include "utils.h"
 
+volatile sig_atomic_t running;
+void handler(int sig_num) {
+  running = 0;
+}
+
 int main(int argc, char **argv) {
+  signal(SIGINT, &handler);
+  running = 1;
+
   int verbose = 0;
   if (argc > 1) {
     if (strcmp(argv[1], "-v") == 0) {
@@ -31,7 +40,7 @@ int main(int argc, char **argv) {
   pre = getAccel();
   last = getOrientation(pre);
 
-  while (1) {
+  while (running) {
     current = getAccel();
     if compareAccel (current, pre) {
       orientation = getOrientation(current);
