@@ -45,6 +45,7 @@ int main(int argc, char **argv) {
   accel current, pre;
   int orientation, last;
 
+  set_device(DISABLE, verbose);
   pre = getAccel();
   last = getOrientation(pre);
 
@@ -70,6 +71,10 @@ int main(int argc, char **argv) {
     last = orientation;
     sleep(WAIT_ROTATE);
   }
+
+  // sets all devices back to normal orientation
+  rotate(NORMAL, verbose, userscript_path);
+  set_device(ENABLE, verbose);
 
   return EXIT_SUCCESS;
 }
