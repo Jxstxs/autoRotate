@@ -18,15 +18,24 @@ int main(int argc, char **argv) {
   running = 1;
 
   int verbose = 0;
-  if (argc > 1) {
+  char *userscript_path = NULL;
+  if (argc > 1 && argc <= 3) {
     if (strcmp(argv[1], "-v") == 0) {
       verbose = 1;
+    } else if (strcmp(argv[1], "-s") == 0) {
+      if (argc == 3) {
+        userscript_path = argv[2];
+      } else {
+        printf("ERROR: no Path to the userscript given!\n");
+        return EXIT_FAILURE;
+      }
     } else if (strcmp(argv[1], "-V") == 0) {
       printf("%s: Version %s\n", argv[0], VERSION);
       return EXIT_SUCCESS;
     } else if (strcmp(argv[1], "-h") == 0) {
       printf("Usage: %s <-v|-V|-h>\n", argv[0]);
       printf("  -v: enables Output\n");
+      printf("  -s <path>: when given it enables the userscript Feature\n");
       printf("  -V: shows the Version of %s\n", argv[0]);
       printf("  -h: shows this Help\n");
       return EXIT_SUCCESS;
