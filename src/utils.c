@@ -94,3 +94,21 @@ void rotate(int orientation, int verbose, char *usr_scr) {
   }
 }
 
+void set_device(int state, int verbose) {
+  char command[COMMAND_LEN];
+  char *state_command;
+
+  if (state == ENABLE)
+    state_command = "enable";
+  else
+    state_command = "disable";
+
+  for (int i = 0; devices_state[i] != NULL; i++) {
+    if (snprintf(command, sizeof(command), "xinput %s '%s'", state_command,
+                 devices_state[i]) >= 0) {
+      system(command);
+    } else if (verbose == 1)
+      fprintf(stderr, "ERROR: Couldnt generate Command for Device: %s\n",
+              devices_state[i]);
+  }
+}

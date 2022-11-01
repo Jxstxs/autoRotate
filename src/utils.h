@@ -47,4 +47,12 @@ int getOrientation(accel current);
  */
 void rotate(int orientation, int verbose, char *usr_scr);
 
+/**
+ * @brief enables or disables a device (like Keyboard)
+ *
+ * @param state ENABLE|DISABLE
+ * @param verbose the state of verbosity
+ */
+void set_device(int state, int verbose);
+
 #endif // UTILS_H
