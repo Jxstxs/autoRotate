@@ -21,20 +21,28 @@ Install autoRotate by running make
 ```
 
 > NOTE: only tested on Arch Linux with Xorg
-    
+
+### Requirements
+
+* Xorg
+* xinput
+* xrandr
+* an Accelerator in your Laptop
+
 ## Features
 
-- Automatically Rotate the Screen based on the internal Accelerator
+- Automatically Rotate the Screen and Touch Devices based on the internal Accelerator
+- Execute a User Script when the Screen Rotates
 
 ### Todos
 
-- Rotate Touch Devices (Stylus, Touch, ...)
 - better range check Values
 
 ## Usage/Examples
 
 - To run it in the Background type `autoRotate &`
 - To enable Output `autoRotate -v`
+- To define the User Script `autoRotate -s <path>`
 - To show the installed Version `autoRotate -V`
 - To show the Help Page `autoRotate -h`
 
