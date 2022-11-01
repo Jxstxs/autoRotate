@@ -13,5 +13,11 @@ typedef struct {
 
 enum { NORMAL, LEFT, RIGHT, INVERTED };
 static char *ORIENTATION[4] = {"normal", "left", "right", "inverted"};
+static char *TRANSMISSION[4] = {
+  "1 0 0 0 1 0 0 0 1",
+  "0 -1 1 1 0 0 0 0 1",
+  "0 1 0 -1 0 1 0 0 1",
+  "-1 0 1 0 -1 1 0 0 1",
+};
 
 #endif // MAIN_H
