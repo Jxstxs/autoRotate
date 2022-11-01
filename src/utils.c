@@ -22,8 +22,7 @@ int getDimension(const char *dimension) {
   }
 
   if (fgets(result, sizeof(result), dim) == NULL) {
-    fprintf(stderr, "ERROR: Cant read from Accelerator: %s\n",
-            dev_dimension);
+    fprintf(stderr, "ERROR: Cant read from Accelerator: %s\n", dev_dimension);
     exit(EXIT_FAILURE);
   }
 
