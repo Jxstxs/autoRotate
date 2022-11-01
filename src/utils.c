@@ -59,3 +59,38 @@ int getOrientation(accel current) {
 
   return -1;
 }
+
+void rotate(int orientation, int verbose, char *usr_scr) {
+  char command[COMMAND_LEN];
+  char *transmission;
+
+  if (snprintf(command, sizeof(command), "xrandr --output %s --rotate %s",
+               DISPLAY, ORIENTATION[orientation]) >= 0) {
+    system(command);
+  } else if (verbose == 1)
+    fprintf(stderr,
+            "ERROR: Couldnt generate rotation Command for Display: " DISPLAY
+            "\n");
+
+  transmission = TRANSMISSION[orientation];
+
+  for (int i = 0; devices_input[i] != NULL; i++) {
+    if (snprintf(command, sizeof(command), "xinput --set-prop '%s' 163 %s",
+                 devices_input[i], transmission) >= 0) {
+      system(command);
+    } else if (verbose == 1)
+      fprintf(stderr, "ERROR: Couldnt generate Command for Device: %s\n",
+              devices_input[i]);
+  }
+
+  if (usr_scr) {
+    if (snprintf(command, sizeof(command), "sh '%s' %s", usr_scr,
+                 ORIENTATION[orientation]) >= 0) {
+      system(command);
+    } else if (verbose == 1)
+      fprintf(stderr,
+              "ERROR: Couldnt generate Command for Userscript path: %s\n",
+              usr_scr);
+  }
+}
+

@@ -38,4 +38,13 @@ accel getAccel();
  */
 int getOrientation(accel current);
 
+/**
+ * @brief Rotate the Screen and runs extra Commands
+ *
+ * @param orientation the Orientation to Rotate to
+ * @param verbose the state of verbosity
+ * @param usr_scr path to the userscript
+ */
+void rotate(int orientation, int verbose, char *usr_scr);
+
 #endif // UTILS_H
