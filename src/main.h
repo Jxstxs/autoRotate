@@ -5,7 +5,7 @@
 
 #define DEVICE_NAME_LEN 50
 #define DEVICE_RESULT_LEN 10
-#define COMMAND_LEN 50
+#define COMMAND_LEN 100
 
 typedef struct {
   int x, y, z;
