@@ -44,7 +44,6 @@ int main(int argc, char **argv) {
 
   accel current, pre;
   int orientation, last;
-  char command[COMMAND_LEN];
 
   pre = getAccel();
   last = getOrientation(pre);
@@ -57,20 +56,10 @@ int main(int argc, char **argv) {
         if (orientation != -1) {
           if (verbose == 1)
             printf("Orientation: %s\n", ORIENTATION[orientation]);
-          if (snprintf(command, sizeof(command),
-                       "xrandr --output " DISPLAY " --rotate %s",
-                       ORIENTATION[orientation]) >= 0) {
-            // if (snprintf(command, sizeof(command), "screenRotate %s",
-            // ORIENTATION[orientation]) >= 0) {
-            if (verbose == 1)
-              printf("EXECUTING: '%s'\n", command);
-            system(command);
-          } else if (verbose == 1)
-            printf("ERROR: couldnt generate command\n");
+          rotate(orientation, verbose, userscript_path);
         } else {
           if (verbose == 1) {
-            printf("ERROR: orientation not defined\n");
-            printf("Accel: x:%d y:%d z:%d\n", current.x, current.y, current.z);
+            printf("ERROR: orientation not defined (Accel: x:%d y:%d z:%d)\n", current.x, current.y, current.z);
           }
         }
       } else if (verbose == 1)
